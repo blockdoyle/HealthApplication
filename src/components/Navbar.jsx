@@ -16,17 +16,17 @@ function Navbar() {
             </Link>
           </button>
           <button className="custom-button">
-            <Link to="/contact" className="nav-link">
+            <Link to="/fitness" className="nav-link">
               Fitness
             </Link>
           </button>
           <button className="custom-button">
-            <Link to="/contact" className="nav-link">
+            <Link to="/health" className="nav-link">
               Health
             </Link>
           </button>
           <button className="custom-button">
-            <Link to="/contact" className="nav-link">
+            <Link to="/store" className="nav-link">
               Store
             </Link>
           </button>
