@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import HomePageComponent from '../component/HomePage';
+import HomePageComponent from '../components/HomePage';
 
 const HomePage = () => {
     return (
