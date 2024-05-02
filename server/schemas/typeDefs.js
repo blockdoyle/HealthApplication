@@ -15,8 +15,11 @@ const typeDefs = gql`
   type Calorie {
     id: ID!
     user: User!
-    intake: Int!
     date: String!
+    daily_calorie_intake: Int!
+    daily_calorie_expenditure: Int!
+    net_calorie_balance: Int!
+    soft_max_caloric_intake: Int!
   }
 
   type Exercise {
