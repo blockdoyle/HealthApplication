@@ -38,6 +38,11 @@ function Navbar() {
             </Link>
           </button>
           <button className="custom-button">
+              <Link to="/signup" className="nav-link">
+                Signup
+              </Link>
+            </button>
+          <button className="custom-button">
             <Link to="/account" className="nav-link">
               Account
             </Link>
