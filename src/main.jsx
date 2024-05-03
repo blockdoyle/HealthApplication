@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
 import SignUp from "./components/SignupPage.jsx";
+import Login from "./components/LoginForm.jsx";
 
 // Router configuration
 const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/about", element: <AboutPage /> },
       { path: "/fitness", element: <FitnessPage /> },
       { path: "signup", element: <SignUp /> },
+      { path: "login", element: <Login /> },
     ],
   },
 ]);
