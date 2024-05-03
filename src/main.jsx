@@ -9,7 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
-import SignUp from "./pages/SignUp.jsx";
+import SignUp from "./components/SignupPage.jsx";
 
 // Router configuration
 const router = createBrowserRouter([
