@@ -28,5 +28,35 @@
     "caloriesBurned": 3,
     "reps": 10,
     "bodyPart": "Chest"
+  },
+  {
+    "name": "Bicep Curls",
+    "caloriesBurned": 2,
+    "reps": 10,
+    "bodyPart": "Arms"
+  },
+  {
+    "name": "Hammer Curls",
+    "caloriesBurned": 2,
+    "reps": 10,
+    "bodyPart": "Arms"
+  },
+  {
+    "name": "Concentration Curls",
+    "caloriesBurned": 2,
+    "reps": 10,
+    "bodyPart": "Arms"
+  },
+  {
+    "name": "Tricep Dips",
+    "caloriesBurned": 3,
+    "reps": 10,
+    "bodyPart": "Arms"
+  },
+  {
+    "name": "Skull Crushers",
+    "caloriesBurned": 3,
+    "reps": 10,
+    "bodyPart": "Arms"
   }
 ]
