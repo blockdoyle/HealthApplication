@@ -6,16 +6,10 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Routes
-<<<<<<< Updated upstream
-import HomePage from "./pages/HomePage.jsx"
-import AboutPage from "./pages/AboutPage.jsx"
-import SignupPage from "./components/SignupPage.jsx";
-
-=======
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
->>>>>>> Stashed changes
+import SignUp from "./pages/SignUp.jsx";
 
 // Router configuration
 const router = createBrowserRouter([
@@ -25,11 +19,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },
-<<<<<<< Updated upstream
-      { path: "/signup", element: <SignupPage /> },
-=======
       { path: "/fitness", element: <FitnessPage /> },
->>>>>>> Stashed changes
+      { path: "signup", element: <SignUp /> },
     ],
   },
 ]);
