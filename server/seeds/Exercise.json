@@ -1,241 +1,31 @@
 [
   {
-    "name": "Bicep Curl",
-    "caloriesBurned": 2,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Tricep Curl",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Hammer Curl",
-    "caloriesBurned": 2,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Overhead Tricep Extension",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Push-up",
-    "caloriesBurned": 2,
-    "reps": 10,
-    "bodyPart": ["Chest", "Arms"]
-  },
-  {
-    "name": "Chin-up",
-    "caloriesBurned": 4,
-    "reps": 6,
-    "bodyPart": "Arm"
-  },
-  {
-    "name": "Barbell Curl",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Skull Crushers",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Cable Curl",
-    "caloriesBurned": 2,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Tricep Kickback",
-    "caloriesBurned": 2,
-    "reps": 10,
-    "bodyPart": "Arms"
-  },
-  {
-    "name": "Squats",
-    "caloriesBurned": 5,
-    "reps": 10,
-    "bodyPart": ["Legs", "Glutes"]
-  },
-  {
-    "name": "Lunges",
-    "caloriesBurned": 4,
-    "reps": 10,
-    "bodyPart": ["Legs", "Glutes"]
-  },
-  {
-    "name": "Deadlift",
-    "caloriesBurned": 6,
-    "reps": 6,
-    "bodyPart": ["Legs", "Glutes"]
-  },
-  {
-    "name": "Calf Raise",
-    "caloriesBurned": 3,
-    "reps": 12,
-    "bodyPart": "Legs"
-  },
-  {
-    "name": "Step-up",
-    "caloriesBurned": 4,
-    "reps": 8,
-    "bodyPart": ["Legs", "Glutes"]
-  },
-  {
-    "name": "Leg Extension",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Legs"
-  },
-  {
-    "name": "Leg Curl",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Legs"
-  },
-  {
-    "name": "Bulgarian Split Squat",
-    "caloriesBurned": 4,
-    "reps": 8,
-    "bodyPart": ["Legs", "Glutes"]
-  },
-  {
-    "name": "Sumo Squat",
-    "caloriesBurned": 5,
-    "reps": 10,
-    "bodyPart": ["Legs", "Glutes"]
-  },
-  {
-    "name": "Crunches",
-    "caloriesBurned": 2,
-    "reps": 15,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Russian Twists",
-    "caloriesBurned": 2,
-    "reps": 15,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Bicycle Crunches",
-    "caloriesBurned": 3,
-    "reps": 15,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Mountain Climbers",
-    "caloriesBurned": 4,
-    "reps": 15,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Leg Raises",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "V-Ups",
-    "caloriesBurned": 4,
-    "reps": 10,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Flutter Kicks",
-    "caloriesBurned": 3,
-    "reps": 15,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Woodchoppers",
-    "caloriesBurned": 4,
-    "reps": 10,
-    "bodyPart": "Core"
-  },
-  {
-    "name": "Hip Thrust",
-    "caloriesBurned": 5,
-    "reps": 10,
-    "bodyPart": "Glutes"
-  },
-  {
-    "name": "Donkey Kick",
-    "caloriesBurned": 3,
-    "reps": 12,
-    "bodyPart": "Glutes"
-  },
-  {
-    "name": "Glute Bridge",
-    "caloriesBurned": 4,
-    "reps": 10,
-    "bodyPart": "Glutes"
-  },
-  {
-    "name": "Bulgarian Split Squat",
-    "caloriesBurned": 4,
-    "reps": 8,
-    "bodyPart": "Glutes"
-  },
-  {
-    "name": "Fire Hydrants",
-    "caloriesBurned": 3,
-    "reps": 12,
-    "bodyPart": "Glutes"
-  },
-  {
     "name": "Bench Press",
     "caloriesBurned": 4,
+    "reps": 8,
+    "bodyPart": "Chest"
+  },
+  {
+    "name": "Push ups",
+    "caloriesBurned": 2,
     "reps": 10,
     "bodyPart": "Chest"
   },
   {
-    "name": "Dumbbell Fly",
-    "caloriesBurned": 3,
-    "reps": 10,
+    "name": "Dumbbell Bench Press",
+    "caloriesBurned": 4,
+    "reps": 8,
     "bodyPart": "Chest"
   },
   {
     "name": "Incline Bench Press",
     "caloriesBurned": 4,
-    "reps": 10,
+    "reps": 8,
     "bodyPart": "Chest"
   },
   {
-    "name": "Cable Crossover",
+    "name": "Cable Chest Press",
     "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Chest"
-  },
-  {
-    "name": "Decline Bench Press",
-    "caloriesBurned": 4,
-    "reps": 10,
-    "bodyPart": "Chest"
-  },
-  {
-    "name": "Dumbbell Pullover",
-    "caloriesBurned": 3,
-    "reps": 10,
-    "bodyPart": "Chest"
-  },
-  {
-    "name": "Chest Dips",
-    "caloriesBurned": 4,
-    "reps": 7,
-    "bodyPart": "Chest"
-  },
-  {
-    "name": "Medicine Ball Chest Pass",
-    "caloriesBurned": 2,
     "reps": 10,
     "bodyPart": "Chest"
   }
