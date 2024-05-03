@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import FitnessPage from './pages/FitnessPage.jsx';
 import SignUp from './components/SignupPage.jsx';
+import Login from './components/LoginForm.jsx';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,6 +46,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/fitness" element={<FitnessPage />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </Router>
