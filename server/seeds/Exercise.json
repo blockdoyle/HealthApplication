@@ -58,5 +58,125 @@
     "caloriesBurned": 3,
     "reps": 10,
     "bodyPart": "Arms"
+  },
+  {
+    "name": "Overhead Shoulder Press",
+    "caloriesBurned": 4,
+    "reps": 8,
+    "bodyPart": "Shoulders"
+  },
+  {
+    "name": "Lateral Raises",
+    "caloriesBurned": 2,
+    "reps": 10,
+    "bodyPart": "Shoulders"
+  },
+  {
+    "name": "Front Raises",
+    "caloriesBurned": 2,
+    "reps": 10,
+    "bodyPart": "Shoulders"
+  },
+  {
+    "name": "Arnold Press",
+    "caloriesBurned": 4,
+    "reps": 8,
+    "bodyPart": "Shoulders"
+  },
+  {
+    "name": "Upright Rows",
+    "caloriesBurned": 3,
+    "reps": 10,
+    "bodyPart": "Shoulders"
+  },
+  {
+    "name": "Pull ups",
+    "caloriesBurned": 4,
+    "reps": 8,
+    "bodyPart": "Back"
+  },
+  {
+    "name": "Bent-over Rows",
+    "caloriesBurned": 4,
+    "reps": 8,
+    "bodyPart": "Back"
+  },
+  {
+    "name": "Deadlifts",
+    "caloriesBurned": 6,
+    "reps": 6,
+    "bodyPart": "Back"
+  },
+  {
+    "name": "Lat Pulldowns",
+    "caloriesBurned": 3,
+    "reps": 10,
+    "bodyPart": "Back"
+  },
+  {
+    "name": "Single-arm Dumbbell Rows",
+    "caloriesBurned": 3,
+    "reps": 10,
+    "bodyPart": "Back"
+  },
+  {
+    "name": "Bodyweight Squats",
+    "caloriesBurned": 5,
+    "reps": 10,
+    "bodyPart": "Legs"
+  },
+  {
+    "name": "Lunges",
+    "caloriesBurned": 4,
+    "reps": 10,
+    "bodyPart": "Legs"
+  },
+  {
+    "name": "Step-ups",
+    "caloriesBurned": 4,
+    "reps": 10,
+    "bodyPart": "Legs"
+  },
+  {
+    "name": "Glute Bridges",
+    "caloriesBurned": 4,
+    "reps": 10,
+    "bodyPart": "Legs"
+  },
+  {
+    "name": "Calf Raises",
+    "caloriesBurned": 3,
+    "reps": 12,
+    "bodyPart": "Legs"
+  },
+  {
+    "name": "Plank",
+    "caloriesBurned": 3,
+    "reps": 30,
+    "bodyPart": "Abs"
+  },
+  {
+    "name": "Crunches",
+    "caloriesBurned": 2,
+    "reps": 15,
+    "bodyPart": "Abs"
+  },
+  {
+    "name": "Bicycle Crunches",
+    "caloriesBurned": 3,
+    "reps": 15,
+    "bodyPart": "Abs"
+  },
+  {
+    "name": "Mountain Climbers",
+    "caloriesBurned": 4,
+    "reps": 15,
+    "bodyPart": "Abs"
+  },
+  {
+    "name": "Leg Raises",
+    "caloriesBurned": 3,
+    "reps": 12,
+    "bodyPart": "Abs"
   }
 ]
