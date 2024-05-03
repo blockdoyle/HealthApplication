@@ -10,8 +10,6 @@ const LoginForm = () => {
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
-        // Here you would typically handle authentication.
-        // For now, we'll simulate successful login:
         navigate('/dashboard');  // Redirect to a dashboard or home page after login
     };
 
