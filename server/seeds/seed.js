@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 const db = require("../config/connection");
 const { Exercise, User } = require("../models");
-const exerciseData = require("./exerciseData.json");
-const userData = require("./userData.json");
+const exerciseData = require("./Exercise.json");
+const userData = require("./Users.json");
 
 db.once("open", async () => {
   await Exercise.create(exerciseData);
