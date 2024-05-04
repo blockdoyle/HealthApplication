@@ -1,18 +1,39 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { useUserData } from '../context/userDataContext';
-import { Form, Input, Button, Select, Checkbox } from 'antd';
+import { Form, Input, Button, Select, Checkbox, message } from 'antd';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';  
+import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 
 const SignupPage = () => {
-    const { updateUser } = useUserData();
+    const [addUser] = useMutation(ADD_USER);
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-        updateUser({
-
-        });
+    const navigate = useNavigate();  
+    const onFinish = async (values) => {
+        try {
+            const { data } = await addUser({
+                variables: {
+                    input: {
+                        email: values.email,
+                        password: values.password,
+                        sex: values.sex,
+                        height: parseFloat(values.height),
+                        heightUnit: values.height.endsWith("in") ? "in" : "cm",
+                        weight: parseFloat(values.weight),
+                        weightUnit: values.weight.endsWith("lbs") ? "lbs" : "kg",
+                        fitnessGoals: values.fitnessGoals
+                    }
+                }
+            });
+            console.log('Signup success:', data);
+            message.success('Registration successful! Please log in.');
+            navigate('/login');  // Redirect to login page after showing success message
+        } catch (error) {
+            console.error('Error signing up:', error);
+            message.error('Failed to register: ' + error.message);
+        }
     };
 
     return (
