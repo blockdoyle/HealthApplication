@@ -2,27 +2,31 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID!
-    username: String!
+    id: ID!
     email: String!
     sex: String
     height: Float
+    heightUnit: String
     weight: Float
+    weightUnit: String
     age: Int
-    maximumCaloricIntake: Float
+    maximumCaloricIntake: Int
     favouriteExercises: [String]
+    fitnessGoals: [String]
   }
 
   input UserInput {
-    username: String!
     email: String!
     password: String!
     sex: String
     height: Float
+    heightUnit: String
     weight: Float
+    weightUnit: String
     age: Int
-    maximumCaloricIntake: Float
+    maximumCaloricIntake: Int
     favouriteExercises: [String]
+    fitnessGoals: [String]
   }
 
   type AuthPayload {
