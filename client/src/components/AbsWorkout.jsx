@@ -11,7 +11,7 @@ const AbsWorkout = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   const armExercises = data.allExercises.filter(
-    (exercise) => exercise.bodyPart === "abs"
+    (exercise) => exercise.bodyPart === "Abs"
   );
 
   return (

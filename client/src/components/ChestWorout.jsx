@@ -6,12 +6,12 @@ import { GET_EXERCISES } from "../utils/queries";
 
 const ChestWorkout = () => {
   const { data, loading, error } = useQuery(GET_EXERCISES);
-
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   const armExercises = data.allExercises.filter(
-    (exercise) => exercise.bodyPart === "chest"
+    (exercise) => exercise.bodyPart === "Chest"
   );
 
   return (
