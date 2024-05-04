@@ -23,6 +23,7 @@ import ChestWorkout from "./components/ChestWorout.jsx";
 import ArmWorkout from "./components/ArmWorkout.jsx";
 import LegsWorkout from "./components/LegsWorkout.jsx";
 import AbsWorkout from "./components/AbsWorkout.jsx";
+import Login from './components/LoginPage.jsx';
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -54,6 +55,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/fitness" element={<FitnessPage />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/exercises/chest" element={<ChestWorkout />} />
             <Route path="/exercises/legs" element={<LegsWorkout />} />
             <Route path="/exercises/abs" element={<AbsWorkout />} />
