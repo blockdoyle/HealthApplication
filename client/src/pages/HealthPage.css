@@ -1,0 +1,12 @@
+.health-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.search-bar {
+  display: flex;
+  flex-flow: column wrap;
+}
