@@ -27,7 +27,7 @@ const LoginPage = () => {
 
     return (
         <div style={{ maxWidth: 300, margin: "auto" }}>
-            <h1 style={{ textAlign: "center" }}>Login to WebName</h1>
+            <h1 style={{ textAlign: "center" }}>Login</h1>
             <Form onFinish={onFinish} layout="vertical">
                 <Form.Item name="email" label="Email Address" rules={[{ required: true, type: 'email' }]}>
                     <Input />
