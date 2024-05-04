@@ -76,19 +76,22 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (_, { input }) => {
+    addUser:  async (_, { input }) => {
       const existingUser = await User.findOne({ email: input.email });
       if (existingUser) {
         throw new Error("User already exists");
       }
       const hashedPassword = await bcrypt.hash(input.password, 10);
-      const user = await User.create({ ...input, password: hashedPassword });
+      const user = await User.create({
+        ...input,
+        password: hashedPassword
+      });
       await user.save();
-
+    
       const token = signToken(user);
       return { token, user };
     },
-
+    
     updateUser: async (_, { id, input }) => {
       const hashedPassword = await bcrypt.hash(input.password, 10);
       await User.findByIdAndUpdate(id, { ...input, password: hashedPassword });
