@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import { message, Form, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import AuthService from '../utils/auth'
 
 const LoginPage = () => {
     const [login] = useMutation(LOGIN_USER);
@@ -17,13 +18,14 @@ const LoginPage = () => {
                 }
             });
             console.log('Login success:', data);
+            AuthService.login(data.login.token); 
             message.success('Logged in successfully!');
-            navigate('/');  // Redirect to the homepage after login
+            navigate('/'); 
         } catch (error) {
             console.error('Error during login:', error);
             message.error(error.message || 'Failed to log in.');
         }
-    };
+    }
 
     return (
         <div style={{ maxWidth: 300, margin: "auto" }}>
