@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import './App.css'; 
 import {
@@ -14,7 +15,7 @@ import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import FitnessPage from './pages/FitnessPage.jsx';
 import SignUp from './components/SignupPage.jsx';
-import Login from './components/LoginForm.jsx';
+import Login from './components/LoginForm/LoginForm.jsx';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
