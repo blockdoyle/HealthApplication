@@ -13,6 +13,7 @@ import { UserDataProvider } from "./context/userDataContext";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
+import HealthPage from "./pages/HealthPage.jsx";
 import SignUp from "./components/SignupPage.jsx";
 import ChestWorkout from "./components/ChestWorout.jsx";
 import LegsWorkout from "./components/LegsWorkout.jsx";
