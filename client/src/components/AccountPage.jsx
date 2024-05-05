@@ -1,49 +1,63 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, Select, Checkbox, message } from 'antd';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';  
-import { useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
+import { UPDATE_USER } from '../utils/mutations';  
+import { GET_ME } from '../utils/queries';  
 
 const { Option } = Select;
 
-const SignupPage = () => {
-    const [addUser] = useMutation(ADD_USER);
+const AccountManagementPage = () => {
+    const [updateUser] = useMutation(UPDATE_USER);
+    const { data, loading, error } = useQuery(GET_ME);
+    const [form] = Form.useForm();
 
-    const navigate = useNavigate();  
-    const onFinish = async (values) => {
-        try {
-            const { data } = await addUser({
-                variables: {
-                    input: {
-                        email: values.email,
-                        password: values.password,
-                        sex: values.sex,
-                        height: parseFloat(values.height),
-                        heightUnit: values.height.endsWith("in") ? "in" : "cm",
-                        weight: parseFloat(values.weight),
-                        weightUnit: values.weight.endsWith("lbs") ? "lbs" : "kg",
-                        fitnessGoals: values.fitnessGoals
-                    }
-                }
+    useEffect(() => {
+        if (data) {
+            form.setFieldsValue({
+                ...data.me,
+                height: `${data.me.height}${data.me.heightUnit}`,
+                weight: `${data.me.weight}${data.me.weightUnit}`,
             });
-            console.log('Signup success:', data);
-            message.success('Registration successful! Please log in.');
-            navigate('/login');  // Redirect to login page after showing success message
-        } catch (error) {
-            console.error('Error signing up:', error);
-            message.error('Failed to register: ' + error.message);
         }
-    };
+    }, [data, form]);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
+    const onFinish = async (values) => {
+        const updatedValues = {};
+        // Iterate over all form fields and add non-empty ones to updatedValues
+        Object.keys(values).forEach(key => {
+            if (values[key] !== undefined && values[key] !== "") {
+                updatedValues[key] = values[key];
+            }
+        });
+        // Special handling for height and weight to parse float and manage units
+        if (updatedValues.height) {
+            updatedValues.height = parseFloat(values.height);
+            updatedValues.heightUnit = values.height.endsWith("in") ? "in" : "cm";
+        }
+        if (updatedValues.weight) {
+            updatedValues.weight = parseFloat(values.weight);
+            updatedValues.weightUnit = values.weight.endsWith("lbs") ? "lbs" : "kg";
+        }
+        try {
+            await updateUser({ variables: { id: data.me.id, input: updatedValues } });
+            message.success('Account updated successfully!');
+        } catch (e) {
+            console.error('Error updating account:', e);
+            message.error('Failed to update account: ' + e.message);
+        }
+    };    
 
     return (
         <div style={{ maxWidth: 300, margin: "auto" }}>
-            <h1 style={{ textAlign: "center" }}>Sign up to WebName</h1>
+            <h1 style={{ textAlign: "center" }}>Manage Your Account</h1>
             <Form onFinish={onFinish} layout="vertical">
-                <Form.Item name="email" label="Email Address" rules={[{ required: true, type: 'email' }]}>
+                <Form.Item name="email" label="Email Address" rules={[{type: 'email' }]}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="password" label="Password" rules={[{ required: true }]}>
+                <Form.Item name="password" label="Password">
                     <Input.Password />
                 </Form.Item>
                 <h2 style={{ fontWeight: 'bold' }}>Personal Information:</h2>
@@ -78,7 +92,7 @@ const SignupPage = () => {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-                        Sign Up
+                        Update Account
                     </Button>
                 </Form.Item>
             </Form>
@@ -86,4 +100,4 @@ const SignupPage = () => {
     );
 };
 
-export default SignupPage;
+export default AccountManagementPage;

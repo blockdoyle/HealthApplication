@@ -1,24 +1,22 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { Row, Col, Card } from "antd";
-import "./ArmWorkout.css";
+import "./common.css";
 import { GET_EXERCISES } from "../utils/queries";
 
-const ArmWorkoutComponent = () => {
+const ChestWorkout = () => {
   const { data, loading, error } = useQuery(GET_EXERCISES);
-
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // Filter exercises to only include those for "Arms"
   const armExercises = data.allExercises.filter(
-    (exercise) => exercise.bodyPart === "Arms"
+    (exercise) => exercise.bodyPart === "Chest"
   );
 
   return (
     <div>
-      <h1 className="arm-workout-header">Arm Workouts</h1>
+      <h1 className="arm-workout-header">Chest Workouts</h1>
       <Row gutter={[16, 16]} justify="center">
         {armExercises.map((exercise, index) => (
           <Col key={exercise.id} xs={24} sm={12} lg={8}>
@@ -38,4 +36,4 @@ const ArmWorkoutComponent = () => {
   );
 };
 
-export default ArmWorkoutComponent;
+export default ChestWorkout;

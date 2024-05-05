@@ -3,180 +3,210 @@
     "name": "Bench Press",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Chest"
   },
   {
     "name": "Push ups",
     "caloriesBurned": 2,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Chest"
   },
   {
     "name": "Dumbbell Bench Press",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Chest"
   },
   {
     "name": "Incline Bench Press",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Chest"
   },
   {
     "name": "Cable Chest Press",
     "caloriesBurned": 3,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Chest"
   },
   {
     "name": "Bicep Curls",
     "caloriesBurned": 2,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Arms"
   },
   {
     "name": "Hammer Curls",
     "caloriesBurned": 2,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Arms"
   },
   {
     "name": "Concentration Curls",
     "caloriesBurned": 2,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Arms"
   },
   {
     "name": "Tricep Dips",
     "caloriesBurned": 3,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Arms"
   },
   {
     "name": "Skull Crushers",
     "caloriesBurned": 3,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Arms"
   },
   {
     "name": "Overhead Shoulder Press",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Shoulders"
   },
   {
     "name": "Lateral Raises",
     "caloriesBurned": 2,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Shoulders"
   },
   {
     "name": "Front Raises",
     "caloriesBurned": 2,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Shoulders"
   },
   {
     "name": "Arnold Press",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Shoulders"
   },
   {
     "name": "Upright Rows",
     "caloriesBurned": 3,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Shoulders"
   },
   {
     "name": "Pull ups",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Back"
   },
   {
     "name": "Bent-over Rows",
     "caloriesBurned": 4,
     "reps": 8,
+    "sets": 5,
     "bodyPart": "Back"
   },
   {
     "name": "Deadlifts",
     "caloriesBurned": 6,
     "reps": 6,
+    "sets": 5,
     "bodyPart": "Back"
   },
   {
     "name": "Lat Pulldowns",
     "caloriesBurned": 3,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Back"
   },
   {
     "name": "Single-arm Dumbbell Rows",
     "caloriesBurned": 3,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Back"
   },
   {
     "name": "Bodyweight Squats",
     "caloriesBurned": 5,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Legs"
   },
   {
     "name": "Lunges",
     "caloriesBurned": 4,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Legs"
   },
   {
     "name": "Step-ups",
     "caloriesBurned": 4,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Legs"
   },
   {
     "name": "Glute Bridges",
     "caloriesBurned": 4,
     "reps": 10,
+    "sets": 5,
     "bodyPart": "Legs"
   },
   {
     "name": "Calf Raises",
     "caloriesBurned": 3,
     "reps": 12,
+    "sets": 5,
     "bodyPart": "Legs"
   },
   {
     "name": "Plank",
     "caloriesBurned": 3,
     "reps": 30,
+    "sets": 5,
     "bodyPart": "Abs"
   },
   {
     "name": "Crunches",
     "caloriesBurned": 2,
     "reps": 15,
+    "sets": 5,
     "bodyPart": "Abs"
   },
   {
     "name": "Bicycle Crunches",
     "caloriesBurned": 3,
     "reps": 15,
+    "sets": 5,
     "bodyPart": "Abs"
   },
   {
     "name": "Mountain Climbers",
     "caloriesBurned": 4,
     "reps": 15,
+    "sets": 5,
     "bodyPart": "Abs"
   },
   {
     "name": "Leg Raises",
     "caloriesBurned": 3,
     "reps": 12,
+    "sets": 5,
     "bodyPart": "Abs"
   }
 ]

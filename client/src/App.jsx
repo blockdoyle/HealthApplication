@@ -1,32 +1,39 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
-import './App.css'; 
+import React from "react";
+import "./App.css";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import { UserDataProvider } from './context/userDataContext';
-import HomePage from './pages/HomePage.jsx';
-import AboutPage from './pages/AboutPage.jsx';
-import FitnessPage from './pages/FitnessPage.jsx';
-import SignUp from './components/SignupPage.jsx';
-import Login from './components/LoginForm/LoginForm.jsx';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { UserDataProvider } from "./context/userDataContext";
+import HomePage from "./pages/HomePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import FitnessPage from "./pages/FitnessPage.jsx";
+import HealthPage from "./pages/HealthPage.jsx";
+import SignUp from "./components/SignupPage.jsx";
+import Login from "./components/LoginPage.jsx";
+import Account from "./components/AccountPage.jsx";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -46,8 +53,10 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/fitness" element={<FitnessPage />} />
+            <Route path="/health" element={<HealthPage />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/account" element={<Account />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </Router>
