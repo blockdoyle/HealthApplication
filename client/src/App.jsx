@@ -21,7 +21,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
 import HealthPage from "./pages/HealthPage.jsx";
 import SignUp from "./components/SignupPage.jsx";
-import Login from "./components/LoginPage.jsx";
+import Login from "./components/LoginForm/LoginForm.jsx";
 import Account from "./components/AccountPage.jsx";
 
 const httpLink = createHttpLink({
