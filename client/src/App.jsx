@@ -21,13 +21,14 @@ import FitnessPage from "./pages/FitnessPage.jsx";
 import HealthPage from "./pages/HealthPage.jsx";
 import SignUp from "./components/SignupPage.jsx";
 import Login from "./components/LoginPage.jsx";
+import Account from "./components/AccountPage.jsx";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem("token");
   return {
     headers: {
       ...headers,
@@ -54,6 +55,7 @@ function App() {
             <Route path="/health" element={<HealthPage />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/account" element={<Account />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </Router>
