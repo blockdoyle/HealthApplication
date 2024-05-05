@@ -17,8 +17,9 @@ const LoginPage = () => {
                 }
             });
             console.log('Login success:', data);
+            localStorage.setItem('token', data.login.token); 
             message.success('Logged in successfully!');
-            navigate('/');  // Redirect to the homepage after login
+            navigate('/'); 
         } catch (error) {
             console.error('Error during login:', error);
             message.error(error.message || 'Failed to log in.');
