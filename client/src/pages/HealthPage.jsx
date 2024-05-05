@@ -40,7 +40,14 @@ export default function HealthPage() {
         console.log(data);
         console.log(data.items);
         setData(data.items); // This will set the data state to the data fetched from the API.
-        historyData.push(...data.items); // This will push the data fetched from the API to the historyData array.
+        historyData.push(
+          ...data.items.filter(
+            (item) =>
+              !historyData.some(
+                (existingItem) => existingItem.name === item.name
+              )
+          )
+        );
         localStorage.setItem("historyData", JSON.stringify(historyData)); // This will store the historyData array in local storage.
       })
       .catch((error) => {
