@@ -93,10 +93,19 @@ const resolvers = {
     },
     
     updateUser: async (_, { id, input }) => {
-      const hashedPassword = await bcrypt.hash(input.password, 10);
-      await User.findByIdAndUpdate(id, { ...input, password: hashedPassword });
-      return User.findById(id);
-    },
+      const update = { ...input };
+      if (input.password) {
+          update.password = await bcrypt.hash(input.password, 10);
+      }
+      // Remove undefined fields to avoid overwriting existing values with undefined
+      for (let key in update) {
+          if (update[key] === undefined) {
+              delete update[key];
+          }
+      }
+      // Perform the update and return the new updated document
+      return await User.findByIdAndUpdate(id, update, { new: true });
+  },
 
     deleteUser: async (_, { id }) => {
       const deletedUser = await User.findByIdAndDelete(id);
