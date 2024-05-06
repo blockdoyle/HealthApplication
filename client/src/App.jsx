@@ -7,12 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Outlet,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { UserDataProvider } from "./context/userDataContext";
 import HomePage from "./pages/HomePage.jsx";
@@ -20,8 +15,14 @@ import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
 import HealthPage from "./pages/HealthPage.jsx";
 import SignUp from "./components/SignupPage.jsx";
+import ChestWorkout from "./components/ChestWorout.jsx";
+import LegsWorkout from "./components/LegsWorkout.jsx";
+import AbsWorkout from "./components/AbsWorkout.jsx";
 import Login from "./components/LoginPage.jsx";
-import Account from "./components/AccountPage.jsx";
+import SideBar from "./components/SideBar.jsx";
+import Shoulders from "./components/Shoulders.jsx";
+import Back from "./components/Back.jsx";
+import ArmWorkoutComponent from "./components/ArmWorkout.jsx";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -52,10 +53,59 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/fitness" element={<FitnessPage />} />
-            <Route path="/health" element={<HealthPage />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/account" element={<Account />} />
+
+            <Route
+              path="/exercises/chest"
+              element={
+                <SideBar>
+                  <ChestWorkout />
+                </SideBar>
+              }
+            />
+            <Route
+              path="/exercises/arms"
+              element={
+                <SideBar>
+                  <ArmWorkoutComponent />
+                </SideBar>
+              }
+            />
+
+            <Route
+              path="/exercises/shoulders"
+              element={
+                <SideBar>
+                  <Shoulders />
+                </SideBar>
+              }
+            />
+            <Route
+              path="/exercises/back"
+              element={
+                <SideBar>
+                  <Back />
+                </SideBar>
+              }
+            />
+
+            <Route
+              path="/exercises/legs"
+              element={
+                <SideBar>
+                  <LegsWorkout />
+                </SideBar>
+              }
+            />
+            <Route
+              path="/exercises/abs"
+              element={
+                <SideBar>
+                  <AbsWorkout />
+                </SideBar>
+              }
+            />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </Router>
