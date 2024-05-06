@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import "./App.css";
 import {
@@ -15,7 +16,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import FitnessPage from "./pages/FitnessPage.jsx";
 import HealthPage from "./pages/HealthPage.jsx";
 import SignUp from "./components/SignupPage.jsx";
-import ChestWorkout from "./components/ChestWorout.jsx";
+import ChestWorkout from "./components/ChestWorkout.jsx";
 import LegsWorkout from "./components/LegsWorkout.jsx";
 import AbsWorkout from "./components/AbsWorkout.jsx";
 import Login from "./components/LoginPage.jsx";
