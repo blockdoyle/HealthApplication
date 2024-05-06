@@ -5,6 +5,14 @@ import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS} from 'chart.js/auto';
 import { useUserData } from '../context/userDataContext';
 import { useNavigate } from 'react-router-dom';
+import './HomePage.css';
+
+import chestWorkout from '../assets/chest.jpg';
+import armsWorkout from '../assets/arms.jpg';
+import shoulderWorkout from '../assets/shoulder_2.jpg';
+import backWorkout from '../assets/back_3.jpg';
+import legsWorkout from '../assets/legs.jpg';
+import absWorkout from '../assets/abs.jpg';
 
 
 const HomePageComponent = () => {
@@ -13,12 +21,12 @@ const HomePageComponent = () => {
 
     // Defining exercise data
     const exercises = [
-        { name: 'Chest', path: '/exercises/chest' },
-        { name: 'Arms', path: '/exercises/arms' },
-        { name: 'Shoulders', path: '/exercises/shoulders' },
-        { name: 'Back', path: '/exercises/back' },
-        { name: 'Legs', path: '/exercises/legs' },
-        { name: 'Abs', path: '/exercises/abs' }
+        { name: 'Chest', path: '/exercises/chest', imageUrl: chestWorkout},
+        { name: 'Arms', path: '/exercises/arms',  imageUrl: armsWorkout},
+        { name: 'Shoulders', path: '/exercises/shoulders',  imageUrl: shoulderWorkout},
+        { name: 'Back', path: '/exercises/back',  imageUrl: backWorkout},
+        { name: 'Legs', path: '/exercises/legs',  imageUrl: legsWorkout},
+        { name: 'Abs', path: '/exercises/abs',  imageUrl: absWorkout}
     ];
 
     // Card click handler
@@ -54,40 +62,76 @@ const HomePageComponent = () => {
     const options = {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#faf8f8'
+                }
+            },
+        },
+        // elements: {
+        //     arc: {
+        //         borderWidth: 0 // Set borderWidth to 0 to remove the border line
+        //     }
+        // }
     };
 
     return (
-        <div>
+        <div className="home-page-container">
             <Row gutter={16}>
                 <Col span={8}>
-                    <Card title="Calories Intake vs Target">
-                        <Doughnut data={caloriesChartData} options={options} />
+                    <Card className="card-container">
+                        <h2 className="chart-title">Calories Intake vs Target</h2>
+                        <div className="chart-container">
+                            <Doughnut data={caloriesChartData} options={options} />
+                        </div>
                     </Card>
                 </Col>
             
                 <Col span={8}>
-                    <Card title="Current Weight vs Target">
-                        <Doughnut data={weightChartData} options={options} />
+                    <Card className="card-container">
+                        <h2 className="chart-title">Current Weight vs Target</h2>
+                        <div className="chart-container">
+                            <Doughnut data={weightChartData} options={options} />
+                        </div>
                     </Card>
                 </Col>
 
                 <Col span={8}>
-                    <Card title="Workout Progress vs Target">
-                        <Doughnut data={workoutChartData} options={options} />
+                    <Card className="card-container">
+                        <h2 className="chart-title">Workout Progress vs Target</h2>
+                        <div className="chart-container">
+                            <Doughnut data={workoutChartData} options={options} />
+                        </div>
                     </Card>
                 </Col>
             </Row>
             
-            <h1>Fitness Zone: Tailored Workouts For Every Muscle</h1>
+            <h1 className='workout-title'>Fitness Zone: Tailored Workouts For Every Muscle</h1>
             <Row gutter={16} style={{ marginTop: '20px' }}>                
                 {exercises.map((exercise) => (
-                    <Col span={8} key={exercise.name}>
+                    <Col xs={24} sm={12} md={16} lg={12} xl={8} key={exercise.name}>
                         <Card
                             hoverable
-                            title={exercise.name}
+                            title= {<span style={{ color: '#ffff', fontSize: '30px', fontWeight: 'bold', textDecoration: 'none' }}>{exercise.name}</span>}
                             onClick={() => handleCardClick(exercise.path)}
+                            className="exercise-card"
+                            style={{ 
+                                backgroundImage: `url(${exercise.imageUrl})`, 
+                                backgroundSize: 'cover', 
+                                backgroundPosition: 'center' ,
+                                display: 'flex',
+                                // flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '200px',
+                                width: '100%', 
+                                marginBottom: '16px',
+                                boxShadow: '2px 2px 4px rgba(250, 250, 250, 0.8)',
+                                // border: 'none'
+                            }}
                         >
-                            <p>Click on the card for detailed exercises</p>
+                            {/* <p>Click on the card for detailed exercises</p> */}
                         </Card>
                     </Col>
                 ))}
