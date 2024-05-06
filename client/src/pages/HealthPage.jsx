@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Row, Col, Menu, Space, Input, Button, Collapse, Card } from "antd";
+import {
+  Row,
+  Col,
+  Menu,
+  Space,
+  Input,
+  Button,
+  Collapse,
+  Card,
+  Statistic,
+} from "antd";
 import "./HealthPage.css";
 
 const historyData = []; // This is the array that will store the history of food items searched for by the user.
@@ -9,9 +19,33 @@ export default function HealthPage() {
 
   const [data, setData] = useState([]); // This is the state that will store the data fetched from the API.
 
+  const [dailyCalorieIntake, setDailyCalorieIntake] = useState(2500); // This is the state that will store the user's daily calorie intake.
+
+  // This function will handle the user's input for daily calorie intake.
+  const handleCalorieIntakeChange = (e) => {
+    setDailyCalorieIntake(e.target.value);
+  };
+
+  const [dailyCalorieExpenditure, setDailyCalorieExpenditure] = useState(2000); // This is the state that will store the user's daily calorie expenditure.
+
+  // This function will handle the user's input for daily calorie expenditure.
+  const handleCalorieExpenditureChange = (e) => {
+    setDailyCalorieExpenditure(e.target.value);
+  };
+
+  const getTotalCalories = dailyCalorieIntake - dailyCalorieExpenditure; // This will calculate the total calories.
+
   // This function will handle the user's input.
   const handleInputChange = (e) => {
+    console.log(input);
     setInput(e.target.value);
+  };
+
+  const handleInputButton = (e) => {
+    // Set the input to the value of the input field.
+    setInput(e.target.value);
+    // Log the input to the console.
+    console.log(input);
   };
 
   // This function will fetch the data from the API.
@@ -61,6 +95,49 @@ export default function HealthPage() {
     {
       key: "1",
       label: "My Health",
+      children: (
+        <>
+          <div
+            className="cal-inputs"
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "space-between",
+            }}
+          >
+            <div id="cal-daily">
+              <h3>Daily Calorie Intake:</h3>
+              <Space.Compact
+                style={{
+                  width: "65%",
+                }}
+              >
+                <Input
+                  placeholder="Default: 2500"
+                  defaultValue={dailyCalorieIntake}
+                  onChange={handleCalorieIntakeChange}
+                />
+              </Space.Compact>
+            </div>
+            <div id="daily-cal-expenditure">
+              <h3>Daily Calorie Expenditure:</h3>
+              <Space.Compact style={{ width: "65%" }}>
+                <Input
+                  placeholder="Default: 2000"
+                  defaultValue={dailyCalorieExpenditure}
+                  onChange={handleCalorieExpenditureChange}
+                />
+              </Space.Compact>
+            </div>
+            <div id="net-cal-balance">
+              <h3>Net Calorie Balance:</h3>
+              <Space.Compact style={{ width: "16%" }}>
+                <Statistic value={getTotalCalories} />
+              </Space.Compact>
+            </div>
+          </div>
+        </>
+      ),
     },
     {
       key: "2",
@@ -88,7 +165,10 @@ export default function HealthPage() {
           <ul>
             {data.map((item) => (
               <li key={item.name}>
-                {item.name.charAt(0).toUpperCase() + item.name.slice(1)}: <br />
+                <b>
+                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}:{" "}
+                  <br />
+                </b>
                 <ul>
                   <li>Serving Size: Per {item.serving_size_g}g</li>
                   <li>Calories: {item.calories}</li>
@@ -141,7 +221,11 @@ export default function HealthPage() {
           <Col span={14} className="health-main">
             <div>
               {/* The collapse element separates the different health sections */}
-              <Collapse items={items} size="large" defaultActiveKey={["1"]} />
+              <Collapse
+                items={items}
+                size="large"
+                defaultActiveKey={["1", "2"]}
+              />
             </div>
           </Col>
         </Row>
