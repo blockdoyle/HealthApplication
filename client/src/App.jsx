@@ -19,7 +19,8 @@ import SignUp from "./components/SignupPage.jsx";
 import ChestWorkout from "./components/ChestWorkout.jsx";
 import LegsWorkout from "./components/LegsWorkout.jsx";
 import AbsWorkout from "./components/AbsWorkout.jsx";
-import Login from "./components/LoginForm/LoginForm.jsx";
+import Login from "./components/LoginPage.jsx";
+import Account from "./components/AccountPage.jsx";
 import SideBar from "./components/SideBar.jsx";
 import Shoulders from "./components/Shoulders.jsx";
 import Back from "./components/Back.jsx";
@@ -56,7 +57,8 @@ function App() {
             <Route path="/fitness" element={<FitnessPage />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-
+            <Route path="/login" element={<Login />} />
+            <Route path="/account" element={<Account />} />
             <Route
               path="/exercises/chest"
               element={
