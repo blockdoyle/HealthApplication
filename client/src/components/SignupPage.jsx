@@ -36,7 +36,7 @@ const SignupPage = () => {
 
     return (
         <div style={{ maxWidth: 300, margin: "auto" }}>
-            <h1 style={{ textAlign: "center" }}>Sign up to WebName</h1>
+            <h1 style={{ textAlign: "center" }}>Sign up</h1>
             <Form onFinish={onFinish} layout="vertical">
                 <Form.Item name="email" label="Email Address" rules={[{ required: true, type: 'email' }]}>
                     <Input />
