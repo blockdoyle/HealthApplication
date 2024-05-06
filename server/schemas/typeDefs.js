@@ -16,8 +16,8 @@ const typeDefs = gql`
   }
 
   input UserInput {
-    email: String!
-    password: String!
+    email: String
+    password: String
     sex: String
     height: Float
     heightUnit: String
@@ -27,7 +27,7 @@ const typeDefs = gql`
     maximumCaloricIntake: Int
     favouriteExercises: [String]
     fitnessGoals: [String]
-  }
+  }  
 
   type AuthPayload {
     token: String!
