@@ -19,7 +19,7 @@ import SignUp from "./components/SignupPage.jsx";
 import ChestWorkout from "./components/ChestWorkout.jsx";
 import LegsWorkout from "./components/LegsWorkout.jsx";
 import AbsWorkout from "./components/AbsWorkout.jsx";
-import Login from "./components/LoginPage.jsx";
+import Login from "./components/LoginForm/LoginForm.jsx";
 import Account from "./components/AccountPage.jsx";
 import SideBar from "./components/SideBar.jsx";
 import Shoulders from "./components/Shoulders.jsx";
