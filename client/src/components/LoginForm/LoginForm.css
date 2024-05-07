@@ -6,7 +6,7 @@
 }
 
 .loginInput::placeholder {
-    color: grey !important;
+    color: #808080 !important;
 }
 
 .loginInput input[type="password"]::placeholder {

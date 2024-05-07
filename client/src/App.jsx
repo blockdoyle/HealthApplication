@@ -19,12 +19,13 @@ import SignUp from "./components/SignupPage.jsx";
 import ChestWorkout from "./components/ChestWorkout.jsx";
 import LegsWorkout from "./components/LegsWorkout.jsx";
 import AbsWorkout from "./components/AbsWorkout.jsx";
-import Login from "./components/LoginPage.jsx";
+import Login from "./components/LoginForm/LoginForm.jsx";
 import Account from "./components/AccountPage.jsx";
 import SideBar from "./components/SideBar.jsx";
 import Shoulders from "./components/Shoulders.jsx";
 import Back from "./components/Back.jsx";
 import ArmWorkoutComponent from "./components/ArmWorkout.jsx";
+import Footer from "./components/Footer.jsx";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -60,6 +61,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/health" element={<HealthPage />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/health" element={<HealthPage />} />
             <Route
               path="/exercises/chest"
               element={
@@ -112,6 +114,7 @@ function App() {
             />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
+          <Footer />
         </Router>
       </UserDataProvider>
     </ApolloProvider>

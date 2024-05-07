@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
+import { UserOutlined } from "@ant-design/icons";
+import logo from "../assets/logo.png";
+import './Navbar.css';
 
 function Navbar() {
   return (
     <nav className="navbar-main">
       <div className="navmain">
+        {/* Logo */}
+        <div className="logo-container">
+          <Link to="/">
+            <img src={logo} alt="Logo" className="logo" />
+          </Link>
+        </div>
+        {/* Navigation links */}
         <div className="center-buttons">
           <button className="custom-button">
             <Link to="/" className="nav-link">
@@ -25,11 +35,11 @@ function Navbar() {
               Health
             </Link>
           </button>
-          <button className="custom-button">
+          {/* <button className="custom-button">
             <Link to="/store" className="nav-link">
               Store
             </Link>
-          </button>
+          </button> */}
         </div>
         <div className="right-buttons">
           <button className="custom-button">
@@ -37,14 +47,15 @@ function Navbar() {
               Login
             </Link>
           </button>
-          <button className="custom-button">
+          {/* <button className="custom-button">
               <Link to="/signup" className="nav-link">
                 Signup
               </Link>
-            </button>
+            </button> */}
           <button className="custom-button">
             <Link to="/account" className="nav-link">
-              Account
+              <UserOutlined style={{ fontSize: '23px' }}/>
+              {/* Account */}
             </Link>
           </button>
         </div>
