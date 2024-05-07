@@ -65,6 +65,13 @@ const typeDefs = gql`
     price: Float!
   }
 
+  input WeightInput {
+    userId: ID!
+    weight: Float!
+    startWeight: Float!
+    goalWeight: Float!
+  }
+
   type Weight {
     id: ID!
     user: User!
@@ -114,6 +121,7 @@ const typeDefs = gql`
     ): Supplement
     deleteSupplement(id: ID!): Supplement
     addWeightEntry(weight: Float!): Weight
+    addWeight(input: WeightInput!): Weight
     Calorie(
       userId: ID!
       daily_calorie_intake: Int!

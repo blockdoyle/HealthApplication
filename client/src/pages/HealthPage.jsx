@@ -25,9 +25,11 @@ export default function HealthPage() {
 
   const [data, setData] = useState([]); // This is the state that will store the data fetched from the API.
 
-  const [currentWeight, setCurrentWeight] = useState(150); // This is the state that will store the user's current weight.
+  const [startWeight, setStartWeight] = useState(); // This is the state that will store the user's starting weight.
 
-  const [goalWeight, setGoalWeight] = useState(140); // This is the state that will store the user's goal weight.
+  const [currentWeight, setCurrentWeight] = useState(); // This is the state that will store the user's current weight.
+
+  const [goalWeight, setGoalWeight] = useState(); // This is the state that will store the user's goal weight.
 
   const [dailyCalorieIntake, setDailyCalorieIntake] = useState(2500); // This is the state that will store the user's daily calorie intake.
 
@@ -132,8 +134,11 @@ export default function HealthPage() {
     console.log(data);
   };
 
-  // This function will take the current weight and goal weight and calculate the net weight loss.
-  const netWeightLoss = currentWeight - goalWeight;
+  // This function will calculate the net weight loss, based on the user's starting weight and current weight.
+  const netWeightLoss = startWeight - currentWeight;
+
+  // This function will calculate how much more weight needs to be lost to reach the user's goal weight.
+  const weightToLose = currentWeight - goalWeight;
 
   // This is the array that will store the items for the Collapse component.
   const items = [
@@ -222,12 +227,22 @@ export default function HealthPage() {
               textAlign: "center",
             }}
           >
+            <div id="start-weight">
+              <h3>Starting Weight:</h3>
+              <InputNumber
+                min={0}
+                placeholder="Starting Weight"
+                style={{ width: "45%", textAlign: "center" }}
+                onChange={setStartWeight}
+              />
+            </div>
             <div id="current-weight">
               <h3>Current Weight:</h3>
               <InputNumber
                 min={0}
                 placeholder="Current Weight"
                 style={{ width: "45%", textAlign: "center" }}
+                onChange={setCurrentWeight}
               />
             </div>
             <div id="goal-weight">
@@ -236,6 +251,7 @@ export default function HealthPage() {
                 min={0}
                 placeholder="Goal Weight"
                 style={{ width: "45%", textAlign: "center" }}
+                onChange={setGoalWeight}
               />
             </div>
             <div id="weight-loss">
@@ -244,6 +260,16 @@ export default function HealthPage() {
                 min={0}
                 placeholder="Weight Loss"
                 value={netWeightLoss}
+                style={{ width: "45%", textAlign: "center" }}
+                disabled
+              />
+            </div>
+            <div id="remaining-weight">
+              <h3>Weight to Lose:</h3>
+              <InputNumber
+                min={0}
+                placeholder="Weight to Lose"
+                value={weightToLose}
                 style={{ width: "45%", textAlign: "center" }}
                 disabled
               />
