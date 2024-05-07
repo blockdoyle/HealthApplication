@@ -61,7 +61,7 @@ body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #d60000; 
+    background-color: #d60000 !important; 
     color: #fff;
     box-shadow: 2px 2px 4px rgba(250, 250, 250, 0.6);
     font-weight: bold !important;
@@ -77,5 +77,9 @@ body {
 
 .signup-page {
     padding-bottom: 90px;
+}
+
+.ant-checkbox-wrapper {
+    background-color: black !important;
 }
 
