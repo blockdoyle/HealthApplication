@@ -69,11 +69,6 @@ const HomePageComponent = () => {
                 }
             },
         },
-        // elements: {
-        //     arc: {
-        //         borderWidth: 0 // Set borderWidth to 0 to remove the border line
-        //     }
-        // }
     };
 
     return (
@@ -131,7 +126,6 @@ const HomePageComponent = () => {
                                 // border: 'none'
                             }}
                         >
-                            {/* <p>Click on the card for detailed exercises</p> */}
                         </Card>
                     </Col>
                 ))}
