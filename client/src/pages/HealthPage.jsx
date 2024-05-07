@@ -60,11 +60,11 @@ export default function HealthPage() {
   const items = [
     {
       key: "1",
-      label: "My Health",
+      label: <span className="white-text">My Health</span>,
     },
     {
       key: "2",
-      label: "Food Log",
+      label: <span className="white-text">Food Log</span>,
       children: (
         // This is the form that will allow the user to search for food items.
         <>
@@ -109,7 +109,7 @@ export default function HealthPage() {
     },
     {
       key: "3",
-      label: "History",
+      label: <span className="white-text">History</span>,
       children: (
         <>
           {/* Displays a history of all the food you entered into the search bar */}
