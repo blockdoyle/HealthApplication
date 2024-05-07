@@ -1,0 +1,54 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+input, select, button, .ant-select-selector {
+    background-color: #333;
+    color: white;
+    border: 1px solid #666;
+}
+
+.ant-form-item-label > label {
+    color: white !important;  
+}
+
+.ant-checkbox-wrapper, .ant-checkbox-inner, .ant-checkbox-checked .ant-checkbox-inner {
+    color: white;
+    background-color: #333;
+    border-color: #666;
+}
+
+.ant-select-dropdown, .ant-select-dropdown-menu-item {
+    background-color: #333;
+    color: white;
+}
+
+.ant-select-dropdown-menu-item:hover, .ant-select-dropdown-menu-item-active {
+    background-color: #444;  
+    color: white;
+}
+
+.ant-select-selector, .ant-select-selection-search-input {
+    color: white !important;
+}
+
+.ant-select-focused .ant-select-selector, .ant-select-open .ant-select-selector {
+    border-color: #666 !important;
+    box-shadow: none; 
+}
+
+.ant-select-selection-item, .ant-select-selection-placeholder {
+    color: white !important;
+}
+
+button, .ant-btn {
+    background-color: #444;  
+    color: white;
+    border: 1px solid #666;
+}
+
+button:hover, .ant-btn:hover {
+    background-color: #555;
+    border-color: #888;
+}
