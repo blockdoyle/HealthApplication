@@ -1,8 +1,66 @@
-# React + Vite
+# Fitness and Health Tracking Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This web application is designed to help users manage their fitness and health journey, offering tools for account management, nutrition tracking, and workout planning.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshot
+
+## Features
+
+### Account Management
+- Secure user registration and login using JWT for data security.
+
+### Calorie Tracker
+- Tracks calorie intake and offers daily goals, integrated with the CalorieNinjas API for accurate data.
+- Provides recipe suggestions based on remaining daily calories.
+
+### Weight Tracker
+- Allows setting of start and target weights, and tracks progress through interactive graphs.
+- Supports both metric and imperial units.
+
+### Workout Planner
+- Offers a customizable database of exercises, categorized by body part.
+- Allows customization of routines with adjustable sets, reps, and rest times.
+- Estimates calories burned per exercise.
+
+## Technologies Used
+
+### Client-Side Technologies
+- **React**: Manages the view layer for web and mobile apps.
+- **React-DOM**, **React Router DOM**, **Vite**: Enhance and support SPA functionalities.
+- **Ant Design (antd)**, **Chart.js and React-Chartjs-2**, **Bootstrap and React-Bootstrap**: Provide UI components and responsive design.
+- **Apollo Client**: Manages data with GraphQL.
+
+### Server-Side Technologies
+- **Node.js**, **Express**: Foundation for the web application.
+- **Apollo Server Express**, **GraphQL**: Handle API queries.
+- **Mongoose**, **Bcryptjs**, **Dotenv**, **Jsonwebtoken**, **Cors**: Support database interactions, security, and configuration.
+
+## Setup and Installation
+
+0. **Before setup**: Make sure npm is installed and MongoDB is up and running
+1. **Clone the repository**:
+```bash
+git clone [repository-url]
+```
+2. **Install dependencies**:
+```
+cd [project-directory]
+npm install
+```
+3. **Set up environment variables:**
+If using custom DB URL, create a .env file in the root directory with necessary API keys and database URIs.
+4. **Start the server:**
+```npm run dev```
+6. **Access the application:** Open http://localhost:3000 in your browser.
+
+## Deployed location
+
+This app can be found here: 
+
+## Authors
+
+
+
+   
