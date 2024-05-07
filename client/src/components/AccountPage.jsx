@@ -3,7 +3,8 @@ import React, { useEffect } from 'react';
 import { Form, Input, Button, Select, Checkbox, message } from 'antd';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_USER } from '../utils/mutations';  
-import { GET_ME } from '../utils/queries';  
+import { GET_ME } from '../utils/queries'; 
+import './AccountPage.css';
 
 const { Option } = Select;
 
