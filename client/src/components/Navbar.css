@@ -11,10 +11,16 @@
   
 .center-buttons {
     margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
   
 .right-buttons {
     margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
   
 .custom-button {
@@ -37,3 +43,14 @@
 .custom-button:hover {
     border-color: #ffff;
 } 
+
+.logo-container {
+    flex: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .custom-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
