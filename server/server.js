@@ -21,24 +21,23 @@ app.use(express.json());
 // Serve GraphQL Playground at /playground route
 app.get("/playground", expressPlayground({ endpoint: "/graphql" }));
 
-// if we're in production, serve client/build as static assets
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-  });
-} else {
-  // Ensure the Playground route doesn't interfere with React routing in development
-  app.get("*", (req, res, next) => {
-    if (req.path === "/playground") return next();
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-  });
-}
-
 const startApolloServer = async () => {
   await server.start();
   server.applyMiddleware({ app });
 
+  // if we're in production, serve client/build as static assets
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/dist")));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+    });
+  } else {
+    // Ensure the Playground route doesn't interfere with React routing in development
+    app.get("*", (req, res, next) => {
+      if (req.path === "/playground") return next();
+      res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+    });
+  }
   db.once("open", () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
