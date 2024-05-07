@@ -97,43 +97,98 @@ export default function HealthPage() {
       label: "My Health",
       children: (
         <>
+          <div id="calorie-save">
+            <h1>Calories</h1>
+            <Button type="primary">Save</Button>
+          </div>
           <div
-            className="cal-inputs"
+            id="cal-numbers"
             style={{
               display: "flex",
               flexFlow: "row wrap",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
+              textAlign: "center",
             }}
           >
             <div id="cal-daily">
               <h3>Daily Calorie Intake:</h3>
               <Space.Compact
                 style={{
-                  width: "65%",
+                  width: "45%",
                 }}
               >
                 <Input
-                  placeholder="Default: 2500"
                   defaultValue={dailyCalorieIntake}
                   onChange={handleCalorieIntakeChange}
+                  disabled
+                  style={{ color: "black", textAlign: "center" }}
                 />
               </Space.Compact>
             </div>
             <div id="daily-cal-expenditure">
               <h3>Daily Calorie Expenditure:</h3>
-              <Space.Compact style={{ width: "65%" }}>
+              <Space.Compact
+                style={{
+                  width: "45%",
+                }}
+              >
                 <Input
-                  placeholder="Default: 2000"
                   defaultValue={dailyCalorieExpenditure}
                   onChange={handleCalorieExpenditureChange}
+                  disabled
+                  style={{ color: "black", textAlign: "center" }}
                 />
               </Space.Compact>
             </div>
-            <div id="net-cal-balance">
-              <h3>Net Calorie Balance:</h3>
-              <Space.Compact style={{ width: "16%" }}>
-                <Statistic value={getTotalCalories} />
+            <div id="total-calories">
+              <h3>Total Calories:</h3>
+              <Space.Compact
+                style={{
+                  width: "45%",
+                }}
+              >
+                <Input
+                  value={getTotalCalories}
+                  disabled
+                  style={{ color: "black", textAlign: "center" }}
+                />
               </Space.Compact>
+            </div>
+          </div>
+          <div id="tracker-save">
+            <h1>Weight Tracker</h1>
+            <Button type="primary">Save</Button>
+          </div>
+          <div
+            id="weight-tracker"
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "space-around",
+              textAlign: "center",
+            }}
+          >
+            <div id="current-weight">
+              <h3>Current Weight:</h3>
+              <Input
+                placeholder="Current Weight"
+                style={{ width: "45%", textAlign: "center" }}
+              />
+            </div>
+            <div id="goal-weight">
+              <h3>Goal Weight:</h3>
+              <Input
+                placeholder="Goal Weight"
+                style={{ width: "45%", textAlign: "center" }}
+              />
+            </div>
+            <div id="weight-loss">
+              <h3>Weight Loss:</h3>
+              <Input
+                placeholder="Weight Loss"
+                style={{ width: "45%", textAlign: "center" }}
+                disabled
+              />
             </div>
           </div>
         </>
