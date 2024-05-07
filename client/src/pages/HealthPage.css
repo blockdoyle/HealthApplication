@@ -23,3 +23,7 @@
   background-color: var(--quaternary);
   padding: 10px;
 }
+
+.white-text {
+  color: white !important; 
+}
