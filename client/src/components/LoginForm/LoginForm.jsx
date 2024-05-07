@@ -3,16 +3,34 @@ import React from 'react';
 import { Form, Input, Button, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import '../LoginForm/LoginForm.css';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import AuthService from '../../utils/auth'
+
 
 const { Title } = Typography;
 
 const LoginForm = () => {
+    const [login] = useMutation(LOGIN_USER);
     const navigate = useNavigate();
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-        navigate('/dashboard');  // Redirect to a dashboard or home page after login
-    };
+    const onFinish = async (values) => {
+        try {
+            const { data } = await login({
+                variables: {
+                    email: values.email,
+                    password: values.password,
+                }
+            });
+            console.log('Login success:', data);
+            AuthService.login(data.login.token); 
+            message.success('Logged in successfully!');
+            navigate('/'); 
+        } catch (error) {
+            console.error('Error during login:', error);
+            message.error(error.message || 'Failed to log in.');
+        }
+    }
 
     return (
         <div className="login-form-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
