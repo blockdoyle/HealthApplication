@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_ME = gql`
   query GetMe {
@@ -27,6 +27,17 @@ export const GET_EXERCISES = gql`
       reps
       sets
       bodyPart
+    }
+  }
+`;
+
+export const GET_USER_WEIGHT = gql`
+  query GetUserWeight {
+    userWeight {
+      id
+      currentWeight
+      goalWeight
+      weightLoss
     }
   }
 `;

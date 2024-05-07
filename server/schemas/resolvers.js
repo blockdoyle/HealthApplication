@@ -193,10 +193,10 @@ const resolvers = {
       await newWeight.save();
       return newWeight;
     },
-    Calorie: {
-      user: async (parent, args, context) => {
-        return await User.findById(parent.userId);
-      },
+    addWeight: async (parent, { userId, weight, goalWeight }, context) => {
+      const newWeight = new Weight({ userId, weight, goalWeight });
+      await newWeight.save();
+      return newWeight;
     },
   },
 };

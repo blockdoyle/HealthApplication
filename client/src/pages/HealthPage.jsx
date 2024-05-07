@@ -1,16 +1,42 @@
 import { useState } from "react";
-import { Row, Col, Space, Input, Button, Collapse, Card, Tooltip } from "antd";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_WEIGHT } from "../utils/mutations";
+import { GET_USER_WEIGHT } from "../utils/queries";
+import { useUserData } from "../context/userDataContext";
+import {
+  Row,
+  Col,
+  Space,
+  Input,
+  Button,
+  Collapse,
+  Card,
+  Tooltip,
+  InputNumber,
+} from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import "./HealthPage.css";
 
 const historyData = []; // This is the array that will store the history of food items searched for by the user.
 
 export default function HealthPage() {
+  // STATES
   const [input, setInput] = useState(""); // This is the state that will store the user's input.
 
   const [data, setData] = useState([]); // This is the state that will store the data fetched from the API.
 
+  const [currentWeight, setCurrentWeight] = useState(150); // This is the state that will store the user's current weight.
+
+  const [goalWeight, setGoalWeight] = useState(140); // This is the state that will store the user's goal weight.
+
   const [dailyCalorieIntake, setDailyCalorieIntake] = useState(2500); // This is the state that will store the user's daily calorie intake.
+
+  // Get the current logged in user
+  const { userData } = useUserData();
+  const currentUser = userData;
+
+  // Mutations
+  const [addWeight] = useMutation(ADD_WEIGHT); // This is the mutation that will add the user's weight to the database.
 
   // This function will handle the user's input for daily calorie intake.
   const handleCalorieIntakeChange = (e) => {
@@ -30,13 +56,6 @@ export default function HealthPage() {
   const handleInputChange = (e) => {
     console.log(input);
     setInput(e.target.value);
-  };
-
-  const handleInputButton = (e) => {
-    // Set the input to the value of the input field.
-    setInput(e.target.value);
-    // Log the input to the console.
-    console.log(input);
   };
 
   // This function will fetch the data from the API.
@@ -82,6 +101,7 @@ export default function HealthPage() {
   };
 
   // Tooltips
+  // Tooltip for the calorie section.
   const tipCalorie = (
     <span>
       This is the number of calories you should consume in a day. This number is
@@ -91,6 +111,7 @@ export default function HealthPage() {
     </span>
   );
 
+  // Tooltip for the weight tracker.
   const tipWeight = (
     <span>
       This is where you can track your weight. <br />
@@ -98,6 +119,18 @@ export default function HealthPage() {
       <b>Note:</b> Currently only measured in pounds (lbs).
     </span>
   );
+
+  // onSave function to save the user's weight to the database.
+  const onSave = async () => {
+    const { data } = await addWeight({
+      variables: {
+        userId: currentUser._id,
+        weight: currentWeight,
+        goalWeight: goalWeight,
+      },
+    });
+    console.log(data);
+  };
 
   // This is the array that will store the items for the Collapse component.
   const items = [
@@ -170,7 +203,9 @@ export default function HealthPage() {
           <hr style={{ margin: "20px 0" }} />
           <div id="weight-save">
             <h1>Weight Tracker</h1>
-            <Button type="primary">Save</Button>{" "}
+            <Button type="primary" onClick={onSave}>
+              Save
+            </Button>{" "}
             <Tooltip title={tipWeight}>
               <QuestionCircleOutlined />
             </Tooltip>
@@ -186,21 +221,24 @@ export default function HealthPage() {
           >
             <div id="current-weight">
               <h3>Current Weight:</h3>
-              <Input
+              <InputNumber
+                min={0}
                 placeholder="Current Weight"
                 style={{ width: "45%", textAlign: "center" }}
               />
             </div>
             <div id="goal-weight">
               <h3>Goal Weight:</h3>
-              <Input
+              <InputNumber
+                min={0}
                 placeholder="Goal Weight"
                 style={{ width: "45%", textAlign: "center" }}
               />
             </div>
             <div id="weight-loss">
               <h3>Net Weight Loss:</h3>
-              <Input
+              <InputNumber
+                min={0}
                 placeholder="Weight Loss"
                 style={{ width: "45%", textAlign: "center" }}
                 disabled
