@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
   mutation AddUser($input: UserInput!) {
@@ -35,6 +35,16 @@ export const LOGIN_USER = gql`
         id
         email
       }
+    }
+  }
+`;
+
+export const ADD_WEIGHT = gql`
+  mutation AddWeight($userId: ID!, $weight: Float!, $goalWeight: Float!) {
+    addWeight(userId: $userId, weight: $weight, goalWeight: $goalWeight) {
+      id
+      weight
+      goalWeight
     }
   }
 `;
