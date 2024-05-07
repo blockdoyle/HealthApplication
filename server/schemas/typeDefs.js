@@ -27,7 +27,7 @@ const typeDefs = gql`
     maximumCaloricIntake: Int
     favouriteExercises: [String]
     fitnessGoals: [String]
-  }  
+  }
 
   type AuthPayload {
     token: String!
@@ -114,6 +114,11 @@ const typeDefs = gql`
     ): Supplement
     deleteSupplement(id: ID!): Supplement
     addWeightEntry(weight: Float!): Weight
+    Calorie(
+      userId: ID!
+      daily_calorie_intake: Int!
+      daily_calorie_expenditure: Int!
+    ): Calorie
   }
 `;
 
