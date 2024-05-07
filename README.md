@@ -9,6 +9,19 @@ This web application is designed to help users manage their fitness and health j
 https://1drv.ms/w/s!AlCA7mtJhF6qgQJE-Dzi6PUkfmW6?e=vOM8hq
 
 ## Screenshot
+<table>
+  <tr>
+    <td><img src="images/sign_up.jpg" width="100"/></td>
+    <td><img src="images/log_in.jpg" width="100"/></td>
+    <td><img src="images/manage_account.jpg" width="100"/></td>
+  </tr>
+  <tr>
+    <td><img src="images/dashboard.jpg" width="100"/></td>
+    <td><img src="images/health.jpg" width="100"/></td>
+    <td><img src="images/about.jpg" width="100"/></td>
+  </tr>
+</table>
+
 
 ## Features
 
