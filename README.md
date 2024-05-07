@@ -1,4 +1,4 @@
-# Fitness and Health Tracking Web Application
+# Life-thrive
 
 ## Overview
 
@@ -57,10 +57,14 @@ If using custom DB URL, create a .env file in the root directory with necessary 
 
 ## Deployed location
 
-This app can be found here: 
+This app can be found here:
+https://life-thrive.onrender.com/
 
 ## Authors
-
+Brock Lockhart-Doyle
+Jianing Zhou
+Muniba Pervez
+Mohnish Bhujun
 
 
    
