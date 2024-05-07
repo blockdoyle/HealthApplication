@@ -132,6 +132,9 @@ export default function HealthPage() {
     console.log(data);
   };
 
+  // This function will take the current weight and goal weight and calculate the net weight loss.
+  const netWeightLoss = currentWeight - goalWeight;
+
   // This is the array that will store the items for the Collapse component.
   const items = [
     {
@@ -240,6 +243,7 @@ export default function HealthPage() {
               <InputNumber
                 min={0}
                 placeholder="Weight Loss"
+                value={netWeightLoss}
                 style={{ width: "45%", textAlign: "center" }}
                 disabled
               />
