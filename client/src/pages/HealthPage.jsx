@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_WEIGHT } from "../utils/mutations";
-import { GET_USER_WEIGHT } from "../utils/queries";
+// import { GET_USER_WEIGHT } from "../utils/queries";
 import { useUserData } from "../context/userDataContext";
 import {
   Row,
@@ -25,11 +25,26 @@ export default function HealthPage() {
 
   const [data, setData] = useState([]); // This is the state that will store the data fetched from the API.
 
-  const [startWeight, setStartWeight] = useState(); // This is the state that will store the user's starting weight.
+  const [startWeight, setStartWeight] = useState(
+    JSON.parse(localStorage.getItem("startWeight") || 0)
+  ); // This is the state that will store the user's starting weight.
 
-  const [currentWeight, setCurrentWeight] = useState(); // This is the state that will store the user's current weight.
+  const [currentWeight, setCurrentWeight] = useState(
+    JSON.parse(localStorage.getItem("currentWeight") || 0)
+  ); // This is the state that will store the user's current weight.
 
-  const [goalWeight, setGoalWeight] = useState(); // This is the state that will store the user's goal weight.
+  const [goalWeight, setGoalWeight] = useState(
+    JSON.parse(localStorage.getItem("goalWeight") || 0)
+  ); // This is the state that will store the user's goal weight.
+
+  // Save current weights to localStorage
+  const saveWeightsToLocalStorage = () => {
+    localStorage.setItem("startWeight", JSON.stringify(startWeight));
+    localStorage.setItem("currentWeight", JSON.stringify(currentWeight));
+    localStorage.setItem("goalWeight", JSON.stringify(goalWeight));
+  };
+
+  const [totalCalories, setTotalCalories] = useState(0); // This is the state that will store the user's total calories.
 
   const [dailyCalorieIntake, setDailyCalorieIntake] = useState(2500); // This is the state that will store the user's daily calorie intake.
 
@@ -86,6 +101,14 @@ export default function HealthPage() {
         console.log(data);
         console.log(data.items);
         setData(data.items); // This will set the data state to the data fetched from the API.
+
+        let caloriesSum = 0;
+        data.items.forEach((item) => {
+          caloriesSum += item.calories;
+        });
+
+        setTotalCalories((prevCalories) => prevCalories + caloriesSum); // This will set the total calories state to the sum of the calories of the items fetched from the API.
+
         historyData.push(
           ...data.items.filter(
             (item) =>
@@ -148,8 +171,10 @@ export default function HealthPage() {
       children: (
         <>
           <div id="calorie-save">
-            <h1>Calories</h1>
-            <Button type="primary">Save</Button>{" "}
+            <h1 style={{ textAlign: "center" }}>Calories</h1>
+            <Button type="primary" onClick={saveWeightsToLocalStorage}>
+              Save
+            </Button>{" "}
             <Tooltip title={tipCalorie}>
               <QuestionCircleOutlined />
             </Tooltip>
@@ -194,14 +219,14 @@ export default function HealthPage() {
               </Space.Compact>
             </div>
             <div id="total-calories">
-              <h3>Total Calories:</h3>
+              <h3>Total Calories Consumed:</h3>
               <Space.Compact
                 style={{
                   width: "45%",
                 }}
               >
                 <Input
-                  value={getTotalCalories}
+                  value={totalCalories}
                   disabled
                   style={{ color: "black", textAlign: "center" }}
                 />
@@ -210,8 +235,10 @@ export default function HealthPage() {
           </div>
           <hr style={{ margin: "20px 0" }} />
           <div id="weight-save">
-            <h1>Weight Tracker</h1>
-            <Button type="primary" onClick={onSave}>
+            <h1 style={{ textAlign: "center" }}>Weight Tracker</h1>
+            <Button type="primary" onClick={saveWeightsToLocalStorage}>
+              {" "}
+              {/* This button should be refactored in the future to use the onSave function. */}
               Save
             </Button>{" "}
             <Tooltip title={tipWeight}>
@@ -231,6 +258,7 @@ export default function HealthPage() {
               <h3>Starting Weight:</h3>
               <InputNumber
                 min={0}
+                defaultValue={startWeight}
                 placeholder="Starting Weight"
                 style={{ width: "45%", textAlign: "center" }}
                 onChange={setStartWeight}
@@ -240,6 +268,7 @@ export default function HealthPage() {
               <h3>Current Weight:</h3>
               <InputNumber
                 min={0}
+                defaultValue={currentWeight}
                 placeholder="Current Weight"
                 style={{ width: "45%", textAlign: "center" }}
                 onChange={setCurrentWeight}
@@ -249,6 +278,7 @@ export default function HealthPage() {
               <h3>Goal Weight:</h3>
               <InputNumber
                 min={0}
+                defaultValue={goalWeight}
                 placeholder="Goal Weight"
                 style={{ width: "45%", textAlign: "center" }}
                 onChange={setGoalWeight}
