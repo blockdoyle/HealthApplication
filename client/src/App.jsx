@@ -25,6 +25,7 @@ import SideBar from "./components/SideBar.jsx";
 import Shoulders from "./components/Shoulders.jsx";
 import Back from "./components/Back.jsx";
 import ArmWorkoutComponent from "./components/ArmWorkout.jsx";
+import Footer from "./components/Footer.jsx";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -113,6 +114,7 @@ function App() {
             />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
+          <Footer />
         </Router>
       </UserDataProvider>
     </ApolloProvider>
