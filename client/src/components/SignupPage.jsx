@@ -13,20 +13,18 @@ const SignupPage = () => {
     const navigate = useNavigate();  
     const onFinish = async (values) => {
         try {
-            const { data } = await addUser({
-                variables: {
-                    input: {
-                        email: values.email,
-                        password: values.password,
-                        sex: values.sex,
-                        height: parseFloat(values.height),
-                        heightUnit: values.height.endsWith("in") ? "in" : "cm",
-                        weight: parseFloat(values.weight),
-                        weightUnit: values.weight.endsWith("lbs") ? "lbs" : "kg",
-                        fitnessGoals: values.fitnessGoals
-                    }
-                }
-            });
+            const input = {
+                email: values.email,
+                password: values.password,
+                sex: values.sex || undefined, // Ensure undefined if empty
+                height: values.height ? parseFloat(values.height) : undefined,
+                heightUnit: values.height ? (values.height.endsWith("in") ? "in" : "cm") : undefined,
+                weight: values.weight ? parseFloat(values.weight) : undefined,
+                weightUnit: values.weight ? (values.weight.endsWith("lbs") ? "lbs" : "kg") : undefined,
+                fitnessGoals: values.fitnessGoals || []
+            };
+    
+            const { data } = await addUser({ variables: { input } });
             console.log('Signup success:', data);
             message.success('Registration successful! Please log in.');
             navigate('/login');  // Redirect to login page after showing success message
@@ -34,11 +32,11 @@ const SignupPage = () => {
             console.error('Error signing up:', error);
             message.error('Failed to register: ' + error.message);
         }
-    };
+    };    
 
     return (
         <div style={{ maxWidth: 300, margin: "auto" }}>
-            <h1 style={{ textAlign: "center" }}>Sign up to WebName</h1>
+            <h1 style={{ textAlign: "center" }}>Sign up</h1>
             <Form onFinish={onFinish} layout="vertical">
                 <Form.Item name="email" label="Email Address" rules={[{ required: true, type: 'email' }]}>
                     <Input />

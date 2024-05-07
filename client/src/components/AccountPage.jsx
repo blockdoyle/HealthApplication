@@ -14,9 +14,11 @@ const AccountManagementPage = () => {
     useEffect(() => {
         if (data) {
             form.setFieldsValue({
-                ...data.me,
-                height: `${data.me.height}${data.me.heightUnit}`,
-                weight: `${data.me.weight}${data.me.weightUnit}`,
+                email: data.me.email || '',
+                sex: data.me.sex || undefined,
+                height: data.me.height ? `${data.me.height}${data.me.heightUnit}` : '',
+                weight: data.me.weight ? `${data.me.weight}${data.me.weightUnit}` : '',
+                fitnessGoals: data.me.fitnessGoals || [],
             });
         }
     }, [data, form]);
@@ -53,7 +55,7 @@ const AccountManagementPage = () => {
     return (
         <div style={{ maxWidth: 300, margin: "auto" }}>
             <h1 style={{ textAlign: "center" }}>Manage Your Account</h1>
-            <Form onFinish={onFinish} layout="vertical">
+            <Form form={form} onFinish={onFinish} layout="vertical">
                 <Form.Item name="email" label="Email Address" rules={[{type: 'email' }]}>
                     <Input />
                 </Form.Item>
