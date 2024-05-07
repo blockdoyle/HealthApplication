@@ -4,6 +4,10 @@
 
 This web application is designed to help users manage their fitness and health journey, offering tools for account management, nutrition tracking, and workout planning.
 
+## Link to project proposal
+
+https://1drv.ms/w/s!AlCA7mtJhF6qgQJE-Dzi6PUkfmW6?e=vOM8hq
+
 ## Screenshot
 
 ## Features
