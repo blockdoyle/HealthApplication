@@ -1,15 +1,6 @@
 import { useState } from "react";
-import {
-  Row,
-  Col,
-  Menu,
-  Space,
-  Input,
-  Button,
-  Collapse,
-  Card,
-  Statistic,
-} from "antd";
+import { Row, Col, Space, Input, Button, Collapse, Card, Tooltip } from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import "./HealthPage.css";
 
 const historyData = []; // This is the array that will store the history of food items searched for by the user.
@@ -90,6 +81,24 @@ export default function HealthPage() {
       });
   };
 
+  // Tooltips
+  const tipCalorie = (
+    <span>
+      This is the number of calories you should consume in a day. This number is
+      based on the recommendations set by the Government of Ontario's Ministry
+      of Health.{" "}
+      <a href="https://www.ontario.ca/page/calories-menus">Learn more</a>
+    </span>
+  );
+
+  const tipWeight = (
+    <span>
+      This is where you can track your weight. <br />
+      <br />
+      <b>Note:</b> Currently only measured in pounds (lbs).
+    </span>
+  );
+
   // This is the array that will store the items for the Collapse component.
   const items = [
     {
@@ -99,7 +108,10 @@ export default function HealthPage() {
         <>
           <div id="calorie-save">
             <h1>Calories</h1>
-            <Button type="primary">Save</Button>
+            <Button type="primary">Save</Button>{" "}
+            <Tooltip title={tipCalorie}>
+              <QuestionCircleOutlined />
+            </Tooltip>
           </div>
           <div
             id="cal-numbers"
@@ -155,9 +167,13 @@ export default function HealthPage() {
               </Space.Compact>
             </div>
           </div>
-          <div id="tracker-save">
+          <hr style={{ margin: "20px 0" }} />
+          <div id="weight-save">
             <h1>Weight Tracker</h1>
-            <Button type="primary">Save</Button>
+            <Button type="primary">Save</Button>{" "}
+            <Tooltip title={tipWeight}>
+              <QuestionCircleOutlined />
+            </Tooltip>
           </div>
           <div
             id="weight-tracker"
@@ -183,7 +199,7 @@ export default function HealthPage() {
               />
             </div>
             <div id="weight-loss">
-              <h3>Weight Loss:</h3>
+              <h3>Net Weight Loss:</h3>
               <Input
                 placeholder="Weight Loss"
                 style={{ width: "45%", textAlign: "center" }}
