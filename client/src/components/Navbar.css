@@ -1,0 +1,39 @@
+.navbar-main {
+    background-color: #000000;
+    border-bottom: 1px solid #cdcccc;
+}
+  
+.logo {
+    width: 320px;
+    height: auto;
+    margin: 10px 5px 0;
+}
+  
+.center-buttons {
+    margin-top: 12px;
+}
+  
+.right-buttons {
+    margin-top: 12px;
+}
+  
+.custom-button {
+    background: linear-gradient(to right, #ff6b6b, #ee0979);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px 10px 0;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 95px;
+    height: 50px;
+    font-weight: bold;
+    box-shadow: 2px 2px 4px rgba(250, 250, 250, 0.5);
+    /* margin-bottom: 10px; */
+}
+  
+.custom-button:hover {
+    border-color: #ffff;
+} 

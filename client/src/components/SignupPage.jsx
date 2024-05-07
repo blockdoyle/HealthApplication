@@ -4,6 +4,7 @@ import { Form, Input, Button, Select, Checkbox, message } from 'antd';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';  
 import { useNavigate } from 'react-router-dom';
+import './SignupPage.css';
 
 const { Option } = Select;
 
@@ -35,30 +36,38 @@ const SignupPage = () => {
     };    
 
     return (
-        <div style={{ maxWidth: 300, margin: "auto" }}>
-            <h1 style={{ textAlign: "center" }}>Sign up</h1>
+        <div className="signup-page" style={{ maxWidth: 300, margin: "auto" }}>
+            <h1 style={{ textAlign: "center" }}>
+                Signup to <span className="gradient-text"> Life Thrive</span>
+            </h1>
             <Form onFinish={onFinish} layout="vertical">
-                <Form.Item name="email" label="Email Address" rules={[{ required: true, type: 'email' }]}>
-                    <Input />
+                <Form.Item name="email" label="Email Address" rules={[{ required: true, type: 'email' }]} >
+                    <Input style={{ backgroundColor: '#ececec', color: '#000000', boxShadow: '2px 2px 4px rgba(191, 188, 188, 0.6)', padding: '6px' }}/>
                 </Form.Item>
                 <Form.Item name="password" label="Password" rules={[{ required: true }]}>
-                    <Input.Password />
+                    <Input.Password style={{ backgroundColor: '#ececec', color: '#000000', boxShadow: '2px 2px 4px rgba(191, 188, 188, 0.6)', padding: '6px'}}/>
                 </Form.Item>
                 <h2 style={{ fontWeight: 'bold' }}>Personal Information:</h2>
                 <Form.Item name="height" label="Height">
-                    <Input addonAfter={<Select defaultValue="cm" style={{ width: 70 }}>
-                        <Option value="cm">cm</Option>
-                        <Option value="in">in</Option>
-                    </Select>} />
+                    <div style={{ display: 'flex' }}>
+                        <Input style={{ width: 'calc(100% - 80px)', marginRight: '8px', backgroundColor: '#ececec', color: '#000000', boxShadow: '2px 2px 4px rgba(191, 188, 188, 0.6)', padding: '6px' }} />
+                        <Select defaultValue="" style={{ width: 70 }}>
+                            <Option value="cm">cm</Option>
+                            <Option value="in">in</Option>
+                        </Select>
+                    </div>
                 </Form.Item>
                 <Form.Item name="weight" label="Weight">
-                    <Input addonAfter={<Select defaultValue="kg" style={{ width: 70 }}>
-                        <Option value="kg">kg</Option>
-                        <Option value="lbs">lbs</Option>
-                    </Select>} />
+                    <div style={{ display: 'flex' }}>
+                        <Input style={{ width: 'calc(100% - 80px)', marginRight: '8px', backgroundColor: '#ececec', color: '#000000', boxShadow: '2px 2px 4px rgba(191, 188, 188, 0.6)', padding: '6px' }} />
+                        <Select defaultValue="" style={{ width: 70 }}>
+                            <Option value="kg">kg</Option>
+                            <Option value="lbs">lbs</Option>
+                        </Select>
+                    </div>
                 </Form.Item>
                 <Form.Item name="sex" label="Sex">
-                    <Select>
+                    <Select style={{ backgroundColor: '#ececec', color: '#000000', boxShadow: '2px 2px 4px rgba(191, 188, 188, 0.6)' }}>
                         <Option value="male">Male</Option>
                         <Option value="female">Female</Option>
                         <Option value="other">Other</Option>
@@ -75,9 +84,11 @@ const SignupPage = () => {
                     </Checkbox.Group>
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-                        Sign Up
-                    </Button>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button type="primary" htmlType="submit" className="signup-form-button" style={{ width: '100%' }}>
+                            Sign Up
+                        </Button>
+                    </div>
                 </Form.Item>
             </Form>
         </div>
