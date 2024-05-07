@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import logo from "../assets/logo.png";
-import './Navbar.css';
+import "./Navbar.css";
 
 function Navbar() {
   return (
@@ -26,7 +26,7 @@ function Navbar() {
             </Link>
           </button>
           <button className="custom-button">
-            <Link to="/fitness" className="nav-link">
+            <Link to="/exercises/chest" className="nav-link">
               Fitness
             </Link>
           </button>
@@ -54,7 +54,7 @@ function Navbar() {
             </button> */}
           <button className="custom-button">
             <Link to="/account" className="nav-link">
-              <UserOutlined style={{ fontSize: '23px' }}/>
+              <UserOutlined style={{ fontSize: "23px" }} />
               {/* Account */}
             </Link>
           </button>
