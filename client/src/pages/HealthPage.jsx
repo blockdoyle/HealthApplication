@@ -1,16 +1,77 @@
 import { useState } from "react";
-import { Row, Col, Menu, Space, Input, Button, Collapse, Card } from "antd";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_WEIGHT } from "../utils/mutations";
+// import { GET_USER_WEIGHT } from "../utils/queries";
+import { useUserData } from "../context/userDataContext";
+import {
+  Row,
+  Col,
+  Space,
+  Input,
+  Button,
+  Collapse,
+  Card,
+  Tooltip,
+  InputNumber,
+} from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import "./HealthPage.css";
 
 const historyData = []; // This is the array that will store the history of food items searched for by the user.
 
 export default function HealthPage() {
+  // STATES
   const [input, setInput] = useState(""); // This is the state that will store the user's input.
 
   const [data, setData] = useState([]); // This is the state that will store the data fetched from the API.
 
+  const [startWeight, setStartWeight] = useState(
+    JSON.parse(localStorage.getItem("startWeight") || 0)
+  ); // This is the state that will store the user's starting weight.
+
+  const [currentWeight, setCurrentWeight] = useState(
+    JSON.parse(localStorage.getItem("currentWeight") || 0)
+  ); // This is the state that will store the user's current weight.
+
+  const [goalWeight, setGoalWeight] = useState(
+    JSON.parse(localStorage.getItem("goalWeight") || 0)
+  ); // This is the state that will store the user's goal weight.
+
+  // Save current weights to localStorage
+  const saveWeightsToLocalStorage = () => {
+    localStorage.setItem("startWeight", JSON.stringify(startWeight));
+    localStorage.setItem("currentWeight", JSON.stringify(currentWeight));
+    localStorage.setItem("goalWeight", JSON.stringify(goalWeight));
+  };
+
+  const [totalCalories, setTotalCalories] = useState(0); // This is the state that will store the user's total calories.
+
+  const [dailyCalorieIntake, setDailyCalorieIntake] = useState(2500); // This is the state that will store the user's daily calorie intake.
+
+  // Get the current logged in user
+  const { userData } = useUserData();
+  const currentUser = userData;
+
+  // Mutations
+  const [addWeight] = useMutation(ADD_WEIGHT); // This is the mutation that will add the user's weight to the database.
+
+  // This function will handle the user's input for daily calorie intake.
+  const handleCalorieIntakeChange = (e) => {
+    setDailyCalorieIntake(e.target.value);
+  };
+
+  const [dailyCalorieExpenditure, setDailyCalorieExpenditure] = useState(2000); // This is the state that will store the user's daily calorie expenditure.
+
+  // This function will handle the user's input for daily calorie expenditure.
+  const handleCalorieExpenditureChange = (e) => {
+    setDailyCalorieExpenditure(e.target.value);
+  };
+
+  const getTotalCalories = dailyCalorieIntake - dailyCalorieExpenditure; // This will calculate the total calories.
+
   // This function will handle the user's input.
   const handleInputChange = (e) => {
+    console.log(input);
     setInput(e.target.value);
   };
 
@@ -40,6 +101,14 @@ export default function HealthPage() {
         console.log(data);
         console.log(data.items);
         setData(data.items); // This will set the data state to the data fetched from the API.
+
+        let caloriesSum = 0;
+        data.items.forEach((item) => {
+          caloriesSum += item.calories;
+        });
+
+        setTotalCalories((prevCalories) => prevCalories + caloriesSum); // This will set the total calories state to the sum of the calories of the items fetched from the API.
+
         historyData.push(
           ...data.items.filter(
             (item) =>
@@ -56,11 +125,188 @@ export default function HealthPage() {
       });
   };
 
+  // Tooltips
+  // Tooltip for the calorie section.
+  const tipCalorie = (
+    <span>
+      This is the number of calories you should consume in a day. This number is
+      based on the recommendations set by the Government of Ontario's Ministry
+      of Health.{" "}
+      <a href="https://www.ontario.ca/page/calories-menus">Learn more</a>
+    </span>
+  );
+
+  // Tooltip for the weight tracker.
+  const tipWeight = (
+    <span>
+      This is where you can track your weight. <br />
+      <br />
+      <b>Note:</b> Currently only measured in pounds (lbs).
+    </span>
+  );
+
+  // onSave function to save the user's weight to the database.
+  const onSave = async () => {
+    const { data } = await addWeight({
+      variables: {
+        userId: currentUser._id,
+        weight: currentWeight,
+        goalWeight: goalWeight,
+      },
+    });
+    console.log(data);
+  };
+
+  // This function will calculate the net weight loss, based on the user's starting weight and current weight.
+  const netWeightLoss = startWeight - currentWeight;
+
+  // This function will calculate how much more weight needs to be lost to reach the user's goal weight.
+  const weightToLose = currentWeight - goalWeight;
+
   // This is the array that will store the items for the Collapse component.
   const items = [
     {
       key: "1",
       label: <span className="white-text">My Health</span>,
+      children: (
+        <>
+          <div id="calorie-save">
+            <h1 style={{ textAlign: "center" }}>Calories</h1>
+            <Button type="primary" onClick={saveWeightsToLocalStorage}>
+              Save
+            </Button>{" "}
+            <Tooltip title={tipCalorie}>
+              <QuestionCircleOutlined />
+            </Tooltip>
+          </div>
+          <div
+            id="cal-numbers"
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "space-around",
+              textAlign: "center",
+            }}
+          >
+            <div id="cal-daily">
+              <h3>Daily Calorie Intake:</h3>
+              <Space.Compact
+                style={{
+                  width: "45%",
+                }}
+              >
+                <Input
+                  defaultValue={dailyCalorieIntake}
+                  onChange={handleCalorieIntakeChange}
+                  disabled
+                  style={{ color: "black", textAlign: "center" }}
+                />
+              </Space.Compact>
+            </div>
+            <div id="daily-cal-expenditure">
+              <h3>Daily Calorie Expenditure:</h3>
+              <Space.Compact
+                style={{
+                  width: "45%",
+                }}
+              >
+                <Input
+                  defaultValue={dailyCalorieExpenditure}
+                  onChange={handleCalorieExpenditureChange}
+                  disabled
+                  style={{ color: "black", textAlign: "center" }}
+                />
+              </Space.Compact>
+            </div>
+            <div id="total-calories">
+              <h3>Total Calories Consumed:</h3>
+              <Space.Compact
+                style={{
+                  width: "45%",
+                }}
+              >
+                <Input
+                  value={totalCalories}
+                  disabled
+                  style={{ color: "black", textAlign: "center" }}
+                />
+              </Space.Compact>
+            </div>
+          </div>
+          <hr style={{ margin: "20px 0" }} />
+          <div id="weight-save">
+            <h1 style={{ textAlign: "center" }}>Weight Tracker</h1>
+            <Button type="primary" onClick={saveWeightsToLocalStorage}>
+              {" "}
+              {/* This button should be refactored in the future to use the onSave function. */}
+              Save
+            </Button>{" "}
+            <Tooltip title={tipWeight}>
+              <QuestionCircleOutlined />
+            </Tooltip>
+          </div>
+          <div
+            id="weight-tracker"
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "space-around",
+              textAlign: "center",
+            }}
+          >
+            <div id="start-weight">
+              <h3>Starting Weight:</h3>
+              <InputNumber
+                min={0}
+                defaultValue={startWeight}
+                placeholder="Starting Weight"
+                style={{ width: "45%", textAlign: "center" }}
+                onChange={setStartWeight}
+              />
+            </div>
+            <div id="current-weight">
+              <h3>Current Weight:</h3>
+              <InputNumber
+                min={0}
+                defaultValue={currentWeight}
+                placeholder="Current Weight"
+                style={{ width: "45%", textAlign: "center" }}
+                onChange={setCurrentWeight}
+              />
+            </div>
+            <div id="goal-weight">
+              <h3>Goal Weight:</h3>
+              <InputNumber
+                min={0}
+                defaultValue={goalWeight}
+                placeholder="Goal Weight"
+                style={{ width: "45%", textAlign: "center" }}
+                onChange={setGoalWeight}
+              />
+            </div>
+            <div id="weight-loss">
+              <h3>Net Weight Loss:</h3>
+              <InputNumber
+                min={0}
+                placeholder="Weight Loss"
+                value={netWeightLoss}
+                style={{ width: "45%", textAlign: "center" }}
+                disabled
+              />
+            </div>
+            <div id="remaining-weight">
+              <h3>Weight to Lose:</h3>
+              <InputNumber
+                min={0}
+                placeholder="Weight to Lose"
+                value={weightToLose}
+                style={{ width: "45%", textAlign: "center" }}
+                disabled
+              />
+            </div>
+          </div>
+        </>
+      ),
     },
     {
       key: "2",
@@ -88,7 +334,10 @@ export default function HealthPage() {
           <ul>
             {data.map((item) => (
               <li key={item.name}>
-                {item.name.charAt(0).toUpperCase() + item.name.slice(1)}: <br />
+                <b>
+                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}:{" "}
+                  <br />
+                </b>
                 <ul>
                   <li>Serving Size: Per {item.serving_size_g}g</li>
                   <li>Calories: {item.calories}</li>
@@ -141,7 +390,11 @@ export default function HealthPage() {
           <Col span={14} className="health-main">
             <div>
               {/* The collapse element separates the different health sections */}
-              <Collapse items={items} size="large" defaultActiveKey={["1"]} />
+              <Collapse
+                items={items}
+                size="large"
+                defaultActiveKey={["1", "2"]}
+              />
             </div>
           </Col>
         </Row>
